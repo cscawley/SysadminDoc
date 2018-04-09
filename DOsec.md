@@ -174,4 +174,4 @@ Host newhostname
 
 # Next Steps
 
-Digital Ocean offers simple Firewalls that can be configured to attach to your VPS's Virtual NIC. Take advantage of this and add a rule that only allows incoming traffic to the new obscure SSH port.
+Digital Ocean offers simple Firewalls that can be configured to attach to your VPS's virtual NIC. Take advantage of this and add a rule that only allows incoming traffic to the new obscure SSH port.
