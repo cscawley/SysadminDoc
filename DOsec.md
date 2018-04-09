@@ -8,6 +8,8 @@ add ssh public key to Digital Ocean droplet upon creation.
 
 ## configure ssh for first time SSH connection
 
+`vi ~/.ssh/config`
+
 ```
 Host newhostname
         Hostname SERVER_IP_ADDRESS
@@ -158,6 +160,8 @@ Harden the users permissions for OpenSSH standards
 
 ## Configure local SSH for new remote sshd_config 
 
+`vi ~/.ssh/config`
+
 ```
 Host newhostname
         Hostname SERVER_IP_ADDRESS
@@ -165,3 +169,9 @@ Host newhostname
         Port ##### new obscure port
         IdentityFile ~/.ssh/keyfile
 ```
+
+`ssh newhostname`
+
+# Next Steps
+
+Digital Ocean offers simple Firewalls that can be configured to attach to your VPS's Virtual NIC. Take advantage of this and add a rule that only allows incoming traffic to the new obscure SSH port.
