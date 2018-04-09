@@ -6,7 +6,7 @@
 
 add ssh public key to Digital Ocean droplet upon creation.
 
-* configure ssh for first time SSH connection
+## configure ssh for first time SSH connection
 
 ```
 Host newhostname
@@ -23,7 +23,7 @@ Secure access to your VPS by updating sshd_config. This will prevent any logins 
 
 `cd /etc/ssh`
 
-`sudo vi sshd_config`
+`vi sshd_config`
 
 Change the port to an obscure port number.
 
@@ -122,7 +122,7 @@ UsePAM no
 
 reset the ssh service
 
-`sudo service sshd restart`
+`service sshd restart`
 
 ## Add Core System Administration User
 
@@ -153,3 +153,15 @@ Harden the users permissions for OpenSSH standards
 `chmod 600 ~/.ssh/authorized_keys`
 
 ## *Before exiting your current root session start another terminal and ssh into the VPS with the new configuration. If something is misconfigured you can back up and troubleshoot within the initial root session*
+
+# Local Host
+
+## Configure local SSH for new remote sshd_config 
+
+```
+Host newhostname
+        Hostname SERVER_IP_ADDRESS
+        User core
+        Port ##### new obscure port
+        IdentityFile ~/.ssh/keyfile
+```
