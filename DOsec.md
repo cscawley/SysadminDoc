@@ -17,38 +17,13 @@ Host newhostname
 ```
 # Remote VPS First Time Config
 
-## Add Core System Administration User
-
-`adduser core`
-
-make the new user a super user
-
-`usermod -aG sudo core`
-
-add an authorized_keys file to the new users .ssh folder
-
-`su - core`
-
-`mkdir .ssh`
-
-`cd .ssh`
-
-`vi authorized_keys`
-
-paste the contents of your public ssh key in the authorized_key file
-
-Harden the users permissions for OpenSSH standards
-
-`chmod go-w ~/`
-`chmod 700 ~/.ssh`
-`chmod 600 ~/.ssh/authorized_keys`
-
 ## Secure SSH Access
 
 Secure access to your VPS by updating sshd_config. This will prevent any logins from anything but your authorized ssh key. 
 
 `cd /etc/ssh`
-`vi sshd_config`
+
+`sudo vi sshd_config`
 
 Change the port to an obscure port number.
 
@@ -147,6 +122,34 @@ UsePAM no
 
 reset the ssh service
 
-`service sshd restart`
+`sudo service sshd restart`
 
-# *Before exiting your current root session start another terminal and ssh into the VPS with the new configuration. If something is misconfigured you can back up and troubleshoot within the initial root session*
+## Add Core System Administration User
+
+`adduser core`
+
+make the new user a super user
+
+`usermod -aG sudo core`
+
+add an authorized_keys file to the new users .ssh folder
+
+`su - core`
+
+`mkdir .ssh`
+
+`cd .ssh`
+
+`vi authorized_keys`
+
+paste the contents of your public ssh key in the authorized_key file
+
+Harden the users permissions for OpenSSH standards
+
+`chmod go-w ~/`
+
+`chmod 700 ~/.ssh`
+
+`chmod 600 ~/.ssh/authorized_keys`
+
+## *Before exiting your current root session start another terminal and ssh into the VPS with the new configuration. If something is misconfigured you can back up and troubleshoot within the initial root session*
