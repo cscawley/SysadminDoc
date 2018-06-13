@@ -1,8 +1,7 @@
 # go and add the domain to nginx #
 
 ```
-cd /etc/nginx/sites-available
-cat ampelos-default
+vi /etc/nginx/sites-available/server-block-01
 ```
 
 ```
@@ -77,10 +76,10 @@ server {
 ```
 Link the site on nginx.
 ```
-ln -s /etc/nginx/sites-available/webapp /etc/nginx/sites-enabled/webapp
+ln -s /etc/nginx/sites-available/server-block-01 /etc/nginx/sites-enabled/server-block-01
 ```
 
-# SSL and chill #
+# SSL #
 
 Generate a strong key for the certificate.
 ```
@@ -117,7 +116,7 @@ openssl req -newkey rsa:2048 -nodes -keyout example.com.key -out example.com.csr
 
 The issuing authority may have signed the server certificate using an intermediate certificate that is not present in the certificate base of well-known trusted certificate authorities which is distributed with a particular browser. In this case the authority provides a bundle of chained certificates which should be concatenated to the signed server certificate. The server certificate must appear before the chained certificates in the combined file
 
-Sometimes the issuing authority would have heavy delay in signing the CSR. So before they came back with the crt we'd just sign it ourselves:
+If you had no authority to offer a trusted signature for some reason... you could sign it yourself untrusted:
 
 ```
 openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
