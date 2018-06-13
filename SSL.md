@@ -93,12 +93,6 @@ openssl req -out webapp.csr -key webapp.key -new -sha256
 
 Submit the CSR to a third party signer. Copy the resulting CRT and Intermediate CRT. Create them and cat them.
 
-### Generate a strong dhparam certificate
-
-```
-openssl dhparam -out dhparam.pem 4096
-```
-
 The issuing authority may have signed the server certificate using an intermediate certificate that is not present in the certificate base of well-known trusted certificate authorities which is distributed with a particular browser. In this case the authority provides a bundle of chained certificates which should be concatenated to the signed server certificate. The server certificate must appear before the chained certificates in the combined file
 
 ```
@@ -109,4 +103,10 @@ If you had no authority to offer a trusted signature for some reason... you coul
 
 ```
 openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+```
+
+### Generate a strong dhparam certificate
+
+```
+openssl dhparam -out dhparam.pem 4096
 ```
