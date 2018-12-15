@@ -1,4 +1,4 @@
-# go and add the domain to nginx #
+# Add a domain to NGINX and redirect SSL to the subnet address of your webapp  #
 
 ```
 vi /etc/nginx/sites-available/server-block-01
